@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heritage STAR Holdings Group — America's Experiential Infrastructure Company</title>
+<meta name="description" content="Heritage STAR Holdings Group builds and operates the connective infrastructure that lets authentic regions earn what their places, people, and stories are worth.">
+<!-- Open Graph -->
+<meta property="og:title" content="Heritage STAR Holdings Group">
+<meta property="og:description" content="America's experiential infrastructure company. Connection Creates Value™">
+<meta property="og:type" content="website">
+<!-- Schema.org: Organization (travel-ecosystem parent entity) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Heritage STAR Holdings Group",
+  "alternateName": "HSHG",
+  "slogan": "Connection Creates Value",
+  "description": "America's experiential infrastructure company. HSHG develops physical destinations, operates the digital platform that connects them, and provides the services that activate them.",
+  "areaServed": {
+    "@type": "Place",
+    "name": "Northeast Tennessee"
+  },
+  "subOrganization": [
+    { "@type": "Organization", "name": "Xperistar", "url": "https://xperistar.com", "description": "The Destination Operating Platform" },
+    { "@type": "Organization", "name": "Tribal Torque", "description": "AI-native marketing and culture-building" },
+    { "@type": "Organization", "name": "The Rugged Media Network", "description": "Shows, podcasts, and storytelling" }
+  ],
+  "founder": { "@type": "Person", "name": "Scott Andrew", "jobTitle": "Chairman & CEO" }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Libre+Franklin:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   HSHG — Design tokens
+   Palette drawn from approved swatches: dark greens, golds, white
+   Family resemblance with the Xperistar design system (Fraunces)
+   ============================================================ */
+:root {
+  /* Greens — deep forest scale (from approved palette) */
+  --forest-950: #0d2b20;   /* deepest — hero ground */
+  --forest-900: #0f4433;   /* darkest swatch */
+  --forest-700: #0b6b4e;   /* emerald swatch */
+  --forest-600: #2e5a52;   /* slate-green swatch */
+  --forest-500: #45806b;   /* sage swatch */
+  /* Golds (from approved palette) */
+  --gold-600: #a9893e;     /* deep gold swatch */
+  --gold-400: #c6a65b;     /* light gold swatch */
+  --gold-200: #e3d3a8;     /* derived tint for dark ground */
+  /* Paper */
+  --paper: #fcfbf6;
+  --paper-warm: #f6f3ea;
+  --ink: #182722;
+  --ink-muted: #4c5d56;
+
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: "Libre Franklin", "Avenir Next", "Segoe UI", sans-serif;
+
+  --measure: 34rem;
+  --wrap: 72rem;
+  --gutter: clamp(1.5rem, 5vw, 4rem);
+
+  --duration-base: 400ms;
+  --duration-slow: 900ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  font-size: 1.0625rem;
+}
+
+::selection { background: var(--gold-400); color: var(--forest-950); }
+
+a { color: var(--forest-700); text-decoration: none; }
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--gold-600);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+/* ---------- Masthead nav ---------- */
+.masthead {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem var(--gutter);
+  transition: background var(--duration-base) var(--ease-out),
+              box-shadow var(--duration-base) var(--ease-out);
+}
+.masthead.is-scrolled {
+  background: rgba(13, 43, 32, 0.96);
+  box-shadow: 0 1px 0 rgba(198, 166, 91, 0.28);
+  backdrop-filter: blur(8px);
+}
+.masthead-brand {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold-400);
+  white-space: nowrap;
+}
+.masthead-brand span { color: rgba(252, 251, 246, 0.75); font-weight: 400; }
+.masthead nav { display: flex; gap: clamp(1rem, 3vw, 2.25rem); }
+.masthead nav a {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(252, 251, 246, 0.82);
+  padding: 0.35rem 0;
+  border-bottom: 1px solid transparent;
+  transition: color var(--duration-base), border-color var(--duration-base);
+}
+.masthead nav a:hover { color: var(--gold-400); border-bottom-color: var(--gold-600); }
+@media (max-width: 40rem) {
+  .masthead nav a:not(:last-child) { display: none; }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  background:
+    radial-gradient(120% 90% at 15% 10%, rgba(11, 107, 78, 0.28) 0%, transparent 55%),
+    radial-gradient(100% 80% at 85% 90%, rgba(46, 90, 82, 0.35) 0%, transparent 60%),
+    var(--forest-950);
+  color: var(--paper);
+  overflow: hidden;
+}
+.hero-net {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+}
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: 8rem var(--gutter) 6rem;
+}
+.hero-kicker {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--gold-400);
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+.hero-kicker::after {
+  content: "";
+  height: 1px;
+  width: clamp(3rem, 10vw, 7rem);
+  background: linear-gradient(to right, var(--gold-600), transparent);
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2.6rem, 6.5vw, 5.25rem);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  max-width: 18ch;
+  color: var(--paper);
+}
+.hero h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold-200);
+}
+.hero-sub {
+  margin-top: 2.25rem;
+  max-width: 44ch;
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.75;
+  color: rgba(252, 251, 246, 0.88);
+}
+.hero-quiet {
+  margin-top: 4rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  color: var(--gold-400);
+}
+.hero-quiet sup { font-size: 0.55em; font-style: normal; }
+.hero-scroll {
+  position: absolute;
+  bottom: 2.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  color: rgba(252, 251, 246, 0.55);
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+.hero-scroll::after {
+  content: "";
+  width: 1px;
+  height: 2.6rem;
+  background: linear-gradient(to bottom, var(--gold-600), transparent);
+  animation: drip 2.6s var(--ease-out) infinite;
+}
+@keyframes drip {
+  0% { transform: scaleY(0); transform-origin: top; }
+  45% { transform: scaleY(1); transform-origin: top; }
+  55% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* ---------- Shared section grammar ---------- */
+section { position: relative; }
+.section-inner {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: clamp(5rem, 11vw, 8.5rem) var(--gutter);
+}
+.section-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--gold-600);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+.section-label::before {
+  content: "";
+  width: 2.4rem;
+  height: 1px;
+  background: var(--gold-600);
+}
+h2 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  font-size: clamp(1.8rem, 3.6vw, 2.75rem);
+  color: var(--forest-950);
+}
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(1.4rem);
+  transition: opacity var(--duration-slow) var(--ease-out),
+              transform var(--duration-slow) var(--ease-out);
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* ---------- Thesis ---------- */
+.thesis { background: var(--paper); }
+.thesis-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: start;
+}
+.thesis-copy p {
+  max-width: var(--measure);
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  line-height: 1.85;
+  color: var(--ink);
+}
+.thesis-copy p + p { margin-top: 1.75rem; }
+.thesis-copy strong { font-weight: 500; color: var(--forest-900); }
+@media (max-width: 56rem) {
+  .thesis-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- Companies ---------- */
+.companies { background: var(--forest-950); color: var(--paper); }
+.companies .section-label { color: var(--gold-400); }
+.companies .section-label::before { background: var(--gold-400); }
+.companies h2 { color: var(--paper); }
+.companies-lede {
+  margin-top: 1.25rem;
+  max-width: 52ch;
+  color: rgba(252, 251, 246, 0.72);
+  font-size: 1rem;
+}
+.company-list {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 1px solid rgba(198, 166, 91, 0.3);
+}
+.company {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: clamp(1.25rem, 4vw, 4rem);
+  padding: clamp(2rem, 4vw, 3rem) 0;
+  border-bottom: 1px solid rgba(198, 166, 91, 0.3);
+  transition: background var(--duration-base) var(--ease-out);
+}
+.company:hover { background: rgba(11, 107, 78, 0.14); }
+.company-name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+  line-height: 1.2;
+  color: var(--gold-200);
+}
+.company-role {
+  display: block;
+  margin-top: 0.6rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold-400);
+}
+.company-body p {
+  max-width: var(--measure);
+  color: rgba(252, 251, 246, 0.86);
+  line-height: 1.8;
+}
+.company-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.1rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-400);
+  border-bottom: 1px solid rgba(198, 166, 91, 0.45);
+  padding-bottom: 0.2rem;
+  transition: color var(--duration-base), border-color var(--duration-base);
+}
+.company-link:hover { color: var(--paper); border-bottom-color: var(--paper); }
+.company-link::after { content: "→"; font-size: 0.9em; }
+@media (max-width: 48rem) {
+  .company { grid-template-columns: 1fr; gap: 1rem; }
+}
+
+/* ---------- Leadership ---------- */
+.leadership { background: var(--paper-warm); }
+.leader-grid {
+  margin-top: 3.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 5vw, 5rem);
+}
+.leader h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.45rem;
+  color: var(--forest-950);
+}
+.leader-title {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold-600);
+}
+.leader p {
+  margin-top: 1.1rem;
+  max-width: var(--measure);
+  color: var(--ink-muted);
+  line-height: 1.8;
+}
+.leader p em { font-style: italic; }
+.leader { padding-top: 1.75rem; border-top: 2px solid var(--forest-700); }
+@media (max-width: 48rem) {
+  .leader-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- Contact / Footer ---------- */
+.contact {
+  background: var(--forest-950);
+  color: var(--paper);
+  text-align: center;
+}
+.contact .section-inner { padding-bottom: clamp(4rem, 8vw, 6rem); }
+.contact-name {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+  color: var(--paper);
+}
+.contact-place {
+  margin-top: 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(252, 251, 246, 0.65);
+}
+.contact-email {
+  display: inline-block;
+  margin-top: 2.25rem;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  color: var(--gold-400);
+  border-bottom: 1px solid rgba(198, 166, 91, 0.45);
+  padding-bottom: 0.25rem;
+  transition: color var(--duration-base), border-color var(--duration-base);
+}
+.contact-email:hover { color: var(--paper); border-bottom-color: var(--paper); }
+.contact-rule {
+  width: 3rem;
+  height: 1px;
+  background: var(--gold-600);
+  margin: 3.5rem auto 0;
+}
+.footer-mast {
+  margin-top: 3rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--gold-400);
+}
+.footer-mast sup { font-size: 0.55em; font-style: normal; }
+.footer-legal {
+  margin-top: 1.4rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: rgba(252, 251, 246, 0.45);
+}
+</style>
+</head>
+<body>
+
+<!-- ============ MASTHEAD ============ -->
+<header class="masthead" id="masthead">
+  <a class="masthead-brand" href="#top" aria-label="Heritage STAR Holdings Group — back to top">
+    HSHG <span>· Heritage STAR Holdings Group</span>
+  </a>
+  <nav aria-label="Page sections">
+    <a href="#thesis">Thesis</a>
+    <a href="#companies">Companies</a>
+    <a href="#leadership">Leadership</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <!-- Signature element: the connection field — region nodes joined by drawn gold lines -->
+  <svg class="hero-net" id="heroNet" aria-hidden="true" preserveAspectRatio="xMidYMid slice"></svg>
+  <div class="hero-inner">
+    <p class="hero-kicker">Heritage STAR Holdings Group</p>
+    <h1>America's <em>experiential infrastructure</em> company.</h1>
+    <p class="hero-sub">We build and operate the connective infrastructure that lets authentic regions earn what their places, people, and stories are worth.</p>
+    <p class="hero-quiet">Connection Creates Value<sup>™</sup></p>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">Scroll</div>
+</section>
+
+<!-- ============ THE THESIS ============ -->
+<section class="thesis" id="thesis">
+  <div class="section-inner">
+    <div class="thesis-grid">
+      <div class="reveal">
+        <p class="section-label">The Thesis</p>
+        <h2>An empty seat between regions and the systems that plan travel.</h2>
+      </div>
+      <div class="thesis-copy reveal">
+        <p>Travelers experience regions. Institutions organize jurisdictions. No organization has ever held the job of connecting them — and in the AI era, unconnected regions become invisible to the systems that now plan travel.</p>
+        <p>HSHG exists to fill that seat. We develop the physical destinations, operate the digital platform that connects them, and provide the services that activate them — <strong>one thesis, expressed three ways, compounding together.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE COMPANIES ============ -->
+<section class="companies" id="companies">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-label">The Companies</p>
+      <h2>One thesis, expressed three ways.</h2>
+    </div>
+    <div class="company-list">
+
+      <article class="company reveal">
+        <div>
+          <h3 class="company-name">Xperistar</h3>
+          <span class="company-role">The Destination Operating Platform</span>
+        </div>
+        <div class="company-body">
+          <p>The shared digital, operational, and measurement layer for regional visitor economies: discovery, itineraries, membership, and the Regional Scoreboard — free to every public institution it serves. Live today in Northeast Tennessee.</p>
+          <a class="company-link" href="https://xperistar.com" rel="noopener">xperistar.com</a>
+        </div>
+      </article>
+
+      <article class="company reveal">
+        <div>
+          <h3 class="company-name">Tribal Torque</h3>
+          <span class="company-role">AI-Native Marketing &amp; Culture-Building</span>
+        </div>
+        <div class="company-body">
+          <p>Grows businesses by turning customers and employees into a Tribe. Built on the principles of <em>The Rugged Entrepreneur</em>; runs on the 5&nbsp;R's. We don't run campaigns — we build Crusades.</p>
+        </div>
+      </article>
+
+      <article class="company reveal">
+        <div>
+          <h3 class="company-name">The Rugged Media Network</h3>
+          <span class="company-role">The Narrative Engine</span>
+        </div>
+        <div class="company-body">
+          <p>Shows, podcasts, and storytelling that make belonging visible across the ecosystem's brands and regions.</p>
+        </div>
+      </article>
+
+      <article class="company reveal">
+        <div>
+          <h3 class="company-name">Destination Assets</h3>
+          <span class="company-role">The Physical Portfolio</span>
+        </div>
+        <div class="company-body">
+          <p>A 687-acre portfolio across four Northeast Tennessee communities, anchored by Cedar Creek and developed in partnership with Tennessee Hills — the region's flagship experiential brand.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ LEADERSHIP ============ -->
+<section class="leadership" id="leadership">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="section-label">Leadership</p>
+      <h2>Builders, not brokers.</h2>
+    </div>
+    <div class="leader-grid">
+      <div class="leader reveal">
+        <h3>Scott Andrew</h3>
+        <span class="leader-title">Chairman &amp; CEO</span>
+        <p>Author of <em>The Rugged Entrepreneur</em>; CEO of Retail Service Systems; 25+ years founding and scaling companies across distribution, development, and franchise networks.</p>
+      </div>
+      <div class="leader reveal">
+        <h3>The Operating Team</h3>
+        <span class="leader-title">Platform · Data · Story</span>
+        <p>Cody Ryans (brand, platform &amp; IP systems), Romario Briscoe (data, measurement &amp; acquisition), Jahlil White (story &amp; content), supported by academic and institutional partners across the region.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT / FOOTER ============ -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <p class="section-label" style="justify-content:center; color:var(--gold-400);">Contact</p>
+    <p class="contact-name">Heritage STAR Holdings Group</p>
+    <p class="contact-place">Northeast Tennessee</p>
+    <!-- PLACEHOLDER EMAIL — per build notes, set up contact email on the HSHG domain before launch, then update here -->
+    <a class="contact-email" href="mailto:contact@heritagestarholdings.com">contact@heritagestarholdings.com</a>
+    <div class="contact-rule" aria-hidden="true"></div>
+    <p class="footer-mast">HSHG · Connection Creates Value<sup>™</sup></p>
+    <p class="footer-legal">© 2026 Heritage STAR Holdings Group. All rights reserved.</p>
+  </div>
+</section>
+
+<script>
+/* ---------- Masthead scroll state ---------- */
+const masthead = document.getElementById('masthead');
+const onScroll = () => masthead.classList.toggle('is-scrolled', window.scrollY > 40);
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+/* ---------- Reveal on scroll ---------- */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ---------- Signature element: the connection field ----------
+   Scattered region-nodes on the deep forest ground; gold lines
+   draw themselves between neighbors — fragmented places becoming
+   one connected destination. Respects reduced motion.            */
+(function connectionField() {
+  const svg = document.getElementById('heroNet');
+  const W = 1440, H = 900;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Deterministic pseudo-random (stable composition on every load)
+  let seed = 22;
+  const rand = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+
+  const nodes = [];
+  for (let i = 0; i < 26; i++) {
+    nodes.push({
+      x: 60 + rand() * (W - 120),
+      y: 60 + rand() * (H - 120),
+      r: 1.5 + rand() * 2.5
+    });
+  }
+
+  const ns = 'http://www.w3.org/2000/svg';
+  const linesGroup = document.createElementNS(ns, 'g');
+  const dotsGroup = document.createElementNS(ns, 'g');
+  svg.appendChild(linesGroup);
+  svg.appendChild(dotsGroup);
+
+  // Connect each node to its 2 nearest neighbors
+  const drawn = new Set();
+  nodes.forEach((a, i) => {
+    const dists = nodes
+      .map((b, j) => ({ j, d: Math.hypot(a.x - b.x, a.y - b.y) }))
+      .filter(o => o.j !== i)
+      .sort((p, q) => p.d - q.d)
+      .slice(0, 2);
+    dists.forEach(({ j }) => {
+      const key = i < j ? `${i}-${j}` : `${j}-${i}`;
+      if (drawn.has(key)) return;
+      drawn.add(key);
+      const b = nodes[j];
+      const line = document.createElementNS(ns, 'line');
+      line.setAttribute('x1', a.x); line.setAttribute('y1', a.y);
+      line.setAttribute('x2', b.x); line.setAttribute('y2', b.y);
+      line.setAttribute('stroke', 'rgba(198, 166, 91, 0.22)');
+      line.setAttribute('stroke-width', '1');
+      const len = Math.hypot(a.x - b.x, a.y - b.y);
+      if (!reduced) {
+        line.style.strokeDasharray = len;
+        line.style.strokeDashoffset = len;
+        line.style.transition = `stroke-dashoffset 1600ms cubic-bezier(0.22,1,0.36,1) ${400 + Math.min(i, j) * 90}ms`;
+      }
+      linesGroup.appendChild(line);
+    });
+  });
+
+  nodes.forEach((n, i) => {
+    const dot = document.createElementNS(ns, 'circle');
+    dot.setAttribute('cx', n.x); dot.setAttribute('cy', n.y); dot.setAttribute('r', n.r);
+    dot.setAttribute('fill', i % 4 === 0 ? 'rgba(198,166,91,0.55)' : 'rgba(69,128,107,0.5)');
+    if (!reduced) {
+      dot.style.opacity = '0';
+      dot.style.transition = `opacity 900ms ease ${200 + i * 60}ms`;
+    }
+    dotsGroup.appendChild(dot);
+  });
+
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    linesGroup.querySelectorAll('line').forEach(l => { l.style.strokeDashoffset = '0'; });
+    dotsGroup.querySelectorAll('circle').forEach(d => { d.style.opacity = '1'; });
+  }));
+})();
+</script>
+</body>
+</html>
